@@ -31,9 +31,11 @@ function replaceIn(file, from, to) {
 replaceIn('package.json', '"name": "vc-project-template"', `"name": "${name}"`)
 replaceIn('README.md', '# vc-project-template', `# ${name}`)
 
-function run(title, command, args) {
+function run(title, command) {
   console.log(`\n== ${title}`)
-  const result = spawnSync(command, args, { cwd: repoRoot, shell: true, stdio: 'inherit' })
+  // One static command string per step (repo-owned, no external input);
+  // shell:true resolves pnpm.cmd/git.exe on Windows without args-array deprecation.
+  const result = spawnSync(command, { cwd: repoRoot, shell: true, stdio: 'inherit' })
   if (result.status !== 0) {
     console.error(`init: ${title} failed (exit ${result.status}); fix and re-run the remaining steps manually.`)
     process.exit(result.status ?? 1)
@@ -43,11 +45,11 @@ function run(title, command, args) {
 if (!existsSync(resolve(repoRoot, '.git'))) {
   // A GitHub-template clone already carries git; a degit copy does not.
   // verify-concrete-terms reads tracked files, so the first commit must exist.
-  run('git init + first commit', 'git', ['init -b master && git add -A && git commit -m "chore: initialize from vc-project-template"'])
+  run('git init + first commit', 'git init -b master && git add -A && git commit -m "chore: initialize from vc-project-template"')
 }
 
-run('pnpm install (also installs lefthook hooks)', 'pnpm', ['install'])
-run('governance gates (test:docs)', 'pnpm', ['run', 'test:docs'])
+run('pnpm install (also installs lefthook hooks)', 'pnpm install')
+run('governance gates (test:docs)', 'pnpm run test:docs')
 
 console.log(`
 Initialized ${name}. The gates are green. Make the governance yours next:
