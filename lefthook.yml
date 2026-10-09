@@ -1,0 +1,14 @@
+# Git hooks via lefthook. Installed by `pnpm install` (postinstall → lefthook install).
+# Keep hook work narrow: CI owns exhaustive coverage; hooks catch the cheapest violations early.
+pre-commit:
+  jobs:
+    - name: archived agent notes
+      glob: '.agents/notes/archived/**'
+      run: tsx scripts/verify-archived-agent-notes.ts
+    - name: whitespace (staged)
+      run: git diff --cached --check
+pre-push:
+  jobs:
+    # Enable once the project has a typecheck script:
+    # - name: typecheck
+    #   run: pnpm run typecheck
