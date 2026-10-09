@@ -1,9 +1,9 @@
 {
-  "name": "agent-governance-template",
+  "name": "vc-project-template",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Copyable project scaffold carrying an agentic collaboration governance layer: AGENTS.md rules, Agent Note decision records, and mechanically executed documentation gates. Extracted from deepseek-harness; see UPSTREAM.md.",
+  "description": "Copyable project scaffold carrying the agentic collaboration governance layer of deepseek-harness (dsh): AGENTS.md standing orders, Agent Note decision records, and mechanically executed documentation gates. See UPSTREAM.md.",
   "license": "MIT",
   "engines": {
     "node": "^22.19.0 || >=24.0.0"

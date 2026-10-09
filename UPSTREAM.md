@@ -37,7 +37,7 @@ Every file here descends from the deepseek-harness repository (MIT). This file r
 
 ## Written for the template
 
-`README.md`, `AGENTS.md`, `docs/AGENTS.md` (condensed from the upstream documentation standard), `docs/architecture.md` (placeholder), `scripts/governance-config.ts`, `scripts/run-gates.ts` (slim scheduler; upstream `run-gates.ts` carries seventeen CI modes, worker budgets, and dependency graphs), `scripts/doc-budgets.manifest.json`, `package.json`, `lefthook.yml` (upstream uses a custom 859-line lefthook installer; this template uses plain `lefthook install`), `.github/workflows/ci.yml`, `.agents/notes/implemented/process/2026-10-09-adopt-agent-governance-template.md` (seed decision record).
+`README.md`, `AGENTS.md`, `docs/AGENTS.md` (condensed from the upstream documentation standard), `docs/architecture.md` (placeholder), `scripts/governance-config.ts`, `scripts/run-gates.ts` (slim scheduler; upstream `run-gates.ts` carries seventeen CI modes, worker budgets, and dependency graphs), `scripts/init.mjs` (template initializer, no upstream counterpart), `scripts/doc-budgets.manifest.json`, `package.json`, `lefthook.yml` (upstream uses a custom 859-line lefthook installer; this template uses plain `lefthook install`), `.github/workflows/ci.yml`, `.agents/notes/implemented/process/2026-10-09-adopt-dsh-governance-template.md` (seed decision record).
 
 ## Deliberately not extracted
 

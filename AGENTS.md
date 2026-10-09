@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository carries an agentic-collaboration governance layer: standing orders for agents, a decision-record tree, and mechanically executed documentation gates. Read [docs/architecture.md](docs/architecture.md) before changing source; follow [docs/AGENTS.md](docs/AGENTS.md) for documentation.
+This repository carries an agentic-collaboration governance layer: standing orders for agents, a decision-record tree, and mechanically executed documentation gates. The rules originate from deepseek-harness (dsh); [UPSTREAM.md](UPSTREAM.md) maps every file to its source. Read [docs/architecture.md](docs/architecture.md) before changing source; follow [docs/AGENTS.md](docs/AGENTS.md) for documentation.
 
 ## Conventions
 

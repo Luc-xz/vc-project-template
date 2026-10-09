@@ -1,8 +1,28 @@
-# Agent Governance Template
+# vc-project-template
 
-A copyable project scaffold carrying the agentic-collaboration governance layer of [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness): standing orders for AI agents, an Agent Note decision-record tree, and documentation gates that run as commands. Business code is deliberately absent — bring your own product; keep the governance.
+A copyable project scaffold carrying the agentic-collaboration governance layer of [deepseek-harness](https://github.com/deepseek-ai/deepseek-harness) (**dsh**): standing orders for AI agents, an Agent Note decision-record tree, and documentation gates that run as commands. **Every rule in this template originates from dsh**; [UPSTREAM.md](UPSTREAM.md) maps each file to its dsh source and records the extraction baseline. Business code is deliberately absent — bring your own product; keep the governance.
 
 It targets TypeScript + pnpm projects on Node ^22.19 || >=24.
+
+## Quick start a new project
+
+From your GitHub copy of this template repository (make it a template repo once, see below):
+
+```sh
+gh repo create my-app --template <owner>/vc-project-template --clone
+cd my-app
+node scripts/init.mjs my-app
+```
+
+Without the template feature, degit works the same:
+
+```sh
+npx degit <owner>/vc-project-template my-app
+cd my-app
+node scripts/init.mjs my-app
+```
+
+`init.mjs` stamps the project name into `package.json` and this README, commits (degit copies only), installs dependencies and lefthook hooks, and runs the gates once so the initialized tree is proven green. It uses only node: builtins, so it runs before `pnpm install`.
 
 ## What is inside
 
@@ -15,26 +35,13 @@ It targets TypeScript + pnpm projects on Node ^22.19 || >=24.
 | [scripts/](scripts/run-gates.ts) | Eight gates behind `pnpm run doc-sync` / `pnpm run test:docs`: markdown links, one-line paragraphs, doc budgets, doc references in code, blocked ambiguous labels, and three Agent Note gates |
 | [lefthook.yml](lefthook.yml) | Pre-commit whitespace and archive checks; pre-push hook slot |
 
-## Initialize a project from this template
+## Make it yours (after init)
 
-1. Copy this directory to your project root (or copy its contents into an existing repository).
-2. Rename the package in `package.json`, then:
-
-```sh
-git init
-git add -A
-git commit -m "chore: initialize from agent-governance-template"   # verify-concrete-terms needs tracked files
-pnpm install        # also installs lefthook git hooks
-pnpm run test:docs  # must pass green on the pristine tree
-```
-
-3. Make the template yours:
-   - Edit [AGENTS.md](AGENTS.md): keep the governance, add your project's domain rules, drop what does not apply.
-   - Edit [scripts/governance-config.ts](scripts/governance-config.ts): set the Markdown globs your repo maintains, TypeScript globs for doc-reference checks, excluded prefixes, blocked ambiguous labels, and required tracked areas.
-   - Edit [scripts/doc-budgets.manifest.json](scripts/doc-budgets.manifest.json): budget your standing docs (the file lists this template's own four).
-   - Fill in [docs/architecture.md](docs/architecture.md) with your system map.
-   - Add a `CLAUDE.md` that links or copies `AGENTS.md` if your agent reads `CLAUDE.md` (on Windows, copy; symlinks need developer mode).
-4. After the first commit, switch CI to `pnpm install --frozen-lockfile` in [.github/workflows/ci.yml](.github/workflows/ci.yml).
+1. Edit [AGENTS.md](AGENTS.md): keep the governance, add your project's domain rules, drop what does not apply.
+2. Edit [scripts/governance-config.ts](scripts/governance-config.ts): Markdown/TypeScript scan globs, excluded prefixes, blocked ambiguous labels, required tracked areas.
+3. Edit [scripts/doc-budgets.manifest.json](scripts/doc-budgets.manifest.json): budget your standing docs.
+4. Fill in [docs/architecture.md](docs/architecture.md) with your system map.
+5. Add a `CLAUDE.md` linking or copying `AGENTS.md` if your agent reads `CLAUDE.md` (on Windows, copy; symlinks need developer mode).
 
 ## The gates
 
@@ -49,10 +56,17 @@ pnpm run test:docs  # must pass green on the pristine tree
 | `verify-agent-note-format` | Agent Notes missing the header/status/section format |
 | `verify-archived-agent-notes` | Edits to sealed archive artifacts; `-- --write` seals new ones |
 
-`pnpm run test:docs` is the fast subset for every push; `pnpm run doc-sync` runs everything and is what CI-equivalent verification uses.
+`pnpm run test:docs` is the fast subset for every push; `pnpm run doc-sync` runs everything.
+
+## Publishing this template to GitHub
+
+```sh
+gh repo create vc-project-template --public --source=. --push
+gh repo edit --template   # enables "Use this template" + --template cloning
+```
 
 ## What was intentionally left out
 
-The upstream repository carries more machinery this template does not include, to keep a fresh project light: bilingual translation pairing (`.zh.md` + `.i18n.yaml` sidecars with blob-hash consistency), markdown TypeScript-fence compilation (`doc-typecheck`), export-JSDoc completeness, Mermaid diagram validation, generated catalogs, and the documentation website projection. [UPSTREAM.md](UPSTREAM.md) maps every file to its source and notes where each omitted piece lives, so you can extract it deliberately when your project earns it.
+The upstream dsh repository carries more machinery this template does not include, to keep a fresh project light: bilingual translation pairing, markdown TypeScript-fence compilation (`doc-typecheck`), export-JSDoc completeness, Mermaid validation, generated catalogs, and the documentation website projection. [UPSTREAM.md](UPSTREAM.md) maps every file to its source, so you can extract a piece deliberately when your project earns it.
 
-Extracted from deepseek-harness (MIT) at the baseline recorded in [UPSTREAM.md](UPSTREAM.md); see [LICENSE](LICENSE).
+MIT; see [LICENSE](LICENSE).

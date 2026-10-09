@@ -1,4 +1,4 @@
-# Agent Note: Adopt the agent-governance template
+# Agent Note: Adopt the dsh governance template
 
 Status: implemented
 
