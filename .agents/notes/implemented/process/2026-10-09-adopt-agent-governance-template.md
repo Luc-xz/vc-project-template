@@ -8,13 +8,13 @@ A repository developed heavily by AI agents accumulates rules faster than any hu
 
 ## Decision
 
-This repository carries a governance layer extracted from deepseek-harness: a root [AGENTS.md](../../../AGENTS.md) of standing orders, this Agent Note tree as the decision record, a documentation standard with word-count budgets, and a `doc-sync` gate aggregate that mechanically enforces links, wrapping, budgets, blocked ambiguous labels, and Agent Note structure. Gate scopes and blocked terms are configured in one place: [scripts/governance-config.ts](../../../scripts/governance-config.ts). PRs update the affected gates together with the behavior they govern.
+This repository carries a governance layer extracted from deepseek-harness: a root [AGENTS.md](../../../../AGENTS.md) of standing orders, this Agent Note tree as the decision record, a documentation standard with word-count budgets, and a `doc-sync` gate aggregate that mechanically enforces links, wrapping, budgets, blocked ambiguous labels, and Agent Note structure. Gate scopes and blocked terms are configured in one place: [scripts/governance-config.ts](../../../../scripts/governance-config.ts). PRs update the affected gates together with the behavior they govern.
 
 ## Alternatives considered
 
 **Rules-only AGENTS.md with no gates.** Cheapest to adopt, but every rule then depends on reviewer attention; drift is detected only when someone notices. Rejected because the problem being solved is precisely that attention does not scale to agent-generated volumes.
 
-**Full replication of the upstream doc-sync surface.** Carrying bilingual translation pairing, markdown TypeScript-fence compilation, export-JSDoc checks, and generated catalogs matches the source repository exactly, but each piece drags in infrastructure a fresh project does not have yet. Rejected as premature; the upstream pieces remain documented for later extraction in [UPSTREAM.md](../../../UPSTREAM.md).
+**Full replication of the upstream doc-sync surface.** Carrying bilingual translation pairing, markdown TypeScript-fence compilation, export-JSDoc checks, and generated catalogs matches the source repository exactly, but each piece drags in infrastructure a fresh project does not have yet. Rejected as premature; the upstream pieces remain documented for later extraction in [UPSTREAM.md](../../../../UPSTREAM.md).
 
 **An interactive `create-` initializer CLI.** Parameterized scaffolding is friendlier, but it requires real consumers and maintenance before it earns its complexity — the same reasoning that led the upstream repository to delete its own scaffold package. Rejected until several projects have adopted the copyable form.
 

@@ -1,4 +1,4 @@
-# Upstream provenance
+# Upstream source map
 
 Every file here descends from the deepseek-harness repository (MIT). This file records the extraction baseline and each adaptation, so a future re-extraction or upstream comparison has a starting point. The blocked ambiguous label is written around in this file on purpose.
 

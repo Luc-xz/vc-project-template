@@ -53,8 +53,9 @@ function parseMode(raw: string | undefined): Mode {
 function runGate(g: Gate): Promise<GateResult> {
   const started = Date.now()
   return new Promise((resolveGate) => {
-    // shell: true resolves pnpm.cmd on Windows; the argument list is repo-owned.
-    const child = spawn('pnpm', ['run', g.script], { shell: true, stdio: ['ignore', 'pipe', 'pipe'] })
+    // One static command string per gate (repo-owned script names, no external input);
+    // shell:true resolves pnpm.cmd on Windows without an args-array deprecation.
+    const child = spawn(`pnpm run ${g.script}`, { shell: true, stdio: ['ignore', 'pipe', 'pipe'] })
     const tail: string[] = []
     const collect = (chunk: Buffer): void => {
       for (const line of chunk.toString('utf8').split('\n')) {

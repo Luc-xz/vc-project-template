@@ -22,7 +22,7 @@
     "postinstall": "lefthook install"
   },
   "devDependencies": {
-    "@types/mdast": "^2.0.0",
+    "@types/mdast": "^4.0.0",
     "lefthook": "^2.1.9",
     "mdast-util-from-markdown": "^2.0.3",
     "mdast-util-gfm": "^3.1.0",
