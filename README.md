@@ -9,7 +9,7 @@ It targets TypeScript + pnpm projects on Node ^22.19 || >=24.
 From your GitHub copy of this template repository (make it a template repo once, see below):
 
 ```sh
-gh repo create my-app --template <owner>/vc-project-template --clone
+gh repo create my-app --template Luc-xz/vc-project-template --clone
 cd my-app
 node scripts/init.mjs my-app
 ```
@@ -17,7 +17,7 @@ node scripts/init.mjs my-app
 Without the template feature, degit works the same:
 
 ```sh
-npx degit <owner>/vc-project-template my-app
+npx degit Luc-xz/vc-project-template my-app
 cd my-app
 node scripts/init.mjs my-app
 ```
